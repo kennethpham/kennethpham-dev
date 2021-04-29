@@ -1,6 +1,10 @@
 .navbar {
 	padding: 5px;
+	display: flex;
+}
+.navButton {
+	padding: 5px;
 }
 .MuiButton-label {
-	text-transform: none; 
+	text-transform: none;
 }
