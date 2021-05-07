@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
-    maxHeight: "35px",
+    maxHeight: '35px',
     minWidth: "35px",
     minHeight: "30px"
   }
