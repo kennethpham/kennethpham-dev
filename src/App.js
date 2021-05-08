@@ -1,11 +1,14 @@
+import { Switch, Route } from 'react-router-dom';
 import Homepage from './components/Homepage';
-import Navbar from './components/Navbar';
+import Projects from './components/Projects';
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-      <Homepage/>
+      <Switch>
+        <Route exact path="/" component={Homepage}/>
+        <Route path="/projects" component={Projects}/>
+      </Switch>
     </div>
   );
 }

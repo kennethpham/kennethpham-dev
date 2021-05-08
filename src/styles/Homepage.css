@@ -4,6 +4,10 @@
 .description {
 	text-align: center;
 }
-.projects {
-	text-align: center;
+.navbar {
+	padding: 5px;
+	display: flex;
+}
+.navButton {
+	padding: 5px;
 }
