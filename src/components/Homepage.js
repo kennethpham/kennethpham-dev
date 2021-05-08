@@ -16,6 +16,7 @@ const useStyles = makeStyles({
 export default function Homepage() {
   const buttonStyle = useStyles();
   useEffect(()=>{
+    document.title = 'Kenneth\'s Website';
     document.body.style.backgroundColor = '#FFEFD5';
   },[])
   return(

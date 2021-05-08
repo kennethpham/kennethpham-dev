@@ -47,14 +47,17 @@ function RepoCard(props) {
 }
 
 export default function Projects() {
+  const [loading, setLoading] = useState(true);
   const [repos,setRepos] = useState([]);
   const buttonStyle = buttonStyles();
 
   useEffect(() => {
+    document.title = 'Kenneth\'s Projects';
     document.body.style.backgroundColor = '#AAF0D1';
     axios('https://api.github.com/users/kennethpham/repos')
       .then(response => {
         setRepos(response.data);
+        setLoading(false);
         console.log(JSON.stringify(response.data[0]));
       })
       .catch(err => {
@@ -91,12 +94,17 @@ export default function Projects() {
         <h1><p>Projects</p></h1>
       </div>
       <div className='body'>
-        {repos.map((repo) => {
-          return <RepoCard 
-                  url={repo.html_url}
-                  name={repo.name}
-                  description={repo.description} />
-        })}
+        {loading ? <div style={{textAlign: 'center'}}><p>loading...</p></div>
+                    : repos.map((repo, index) => {
+                        return <RepoCard
+                                key={`card${index}`}
+                                url={repo.html_url}
+                                name={repo.name}
+                                description={repo.description} />
+                      })
+
+        }
+
       </div>
     </div>
   );
