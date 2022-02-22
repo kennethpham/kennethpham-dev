@@ -68,7 +68,6 @@ export default function Projects() {
       .then(response => {
         setRepos(response.data);
         setLoading(false);
-        console.log(JSON.stringify(response.data[0]));
       })
       .catch(err => {
         console.log(err);
