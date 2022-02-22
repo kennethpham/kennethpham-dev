@@ -48,10 +48,12 @@ export default function Homepage() {
         <h1><p>Kenneth Pham</p></h1>
       </div>
       <div className='description'>
-        <p>Hello, I'm Kenneth and I recently completed my B.S. at UCSD in
-        Mathematics - Computer Science.<br></br>This is my personal site used
-        for hosting and showcasing any personal projects that I have
-        done.</p> 
+        <p>
+          Hello, I'm Kenneth and I recently completed my B.S. at UCSD in
+          Mathematics - Computer Science.<br></br>This is my personal site used
+          for hosting and showcasing any personal projects that I have
+          done.
+        </p> 
       </div>
     </div>
   );

@@ -29,16 +29,26 @@ const cardStyles = makeStyles({
   }
 })
 
-function RepoCard(props) {
+interface Repo {
+  name: string;
+  html_url: string;
+  description: string;
+}
+
+interface RepoCardProps {
+  repo: Repo;
+}
+
+function RepoCard({ repo }: RepoCardProps) {
   const cardStyle = cardStyles();
-  return(
+  return (
     <div className='repoCard'>
       <Card className={cardStyle.root}>
         <CardHeader className={cardStyle.title}
-          title={<a href={props.url}>{props.name}</a>}/>
+          title={<a href={repo.html_url}>{repo.name}</a>} />
         <CardContent className={cardStyle.desc}>
           <Typography>
-            {props.description ? props.description : 'null'}
+            {repo.description ? repo.description : 'null'}
           </Typography>
         </CardContent>
       </Card>
@@ -48,7 +58,7 @@ function RepoCard(props) {
 
 export default function Projects() {
   const [loading, setLoading] = useState(true);
-  const [repos,setRepos] = useState([]);
+  const [repos, setRepos] = useState([]);
   const buttonStyle = buttonStyles();
 
   useEffect(() => {
@@ -65,43 +75,42 @@ export default function Projects() {
       })
   }, [])
 
-  return(
+  return (
     <div className='projects'>
       <div className='navbar'>
-          <div className='navButton'>
-            <Button variant='contained' className={buttonStyle.root}
-              href='https://github.com/kennethpham'>
-              <img src={`${process.env.PUBLIC_URL}/images/Octicons-mark-github.svg`}
+        <div className='navButton'>
+          <Button variant='contained' className={buttonStyle.root}
+            href='https://github.com/kennethpham'>
+            <img src={`${process.env.PUBLIC_URL}/images/Octicons-mark-github.svg`}
               alt='Github' height='25' width='25' />
+          </Button>
+        </div>
+        <div className='navButton'>
+          <Button variant='contained' className={buttonStyle.root}
+            href='https://www.linkedin.com/in/kenneth-pham-246a90183/'>
+            <img src={`${process.env.PUBLIC_URL}/images/linkedIn.png`}
+              alt='LinkedIn' height='30' width='30' />
+          </Button>
+        </div>
+        <div className='navButton'>
+          <Link to='/'>
+            <Button variant='contained' className={buttonStyle.root}>
+              <p>Home</p>
             </Button>
-          </div>
-          <div className='navButton'>
-            <Button variant='contained' className={buttonStyle.root}
-              href='https://www.linkedin.com/in/kenneth-pham-246a90183/'>
-              <img src={`${process.env.PUBLIC_URL}/images/linkedIn.png`}
-                alt='LinkedIn' height='30' width='30' />
-            </Button>
-          </div>
-          <div className='navButton'>
-            <Link to='/'>
-              <Button variant='contained' className={buttonStyle.root}>
-                <p>Home</p>
-              </Button>
-            </Link>
-          </div>
+          </Link>
+        </div>
       </div>
       <div className='header'>
         <h1><p>Projects</p></h1>
       </div>
       <div className='body'>
-        {loading ? <div style={{textAlign: 'center'}}><p>loading...</p></div>
-                    : repos.map((repo, index) => {
-                        return <RepoCard
-                                key={`card${index}`}
-                                url={repo.html_url}
-                                name={repo.name}
-                                description={repo.description} />
-                      })
+        {loading ? <div style={{ textAlign: 'center' }}><p>loading...</p></div>
+          : repos!.map((repo: Repo, index) => {
+            return <RepoCard
+              key={`card${index}`}
+              repo={repo}
+            />
+          })
 
         }
 
