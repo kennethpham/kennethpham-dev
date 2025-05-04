@@ -69,7 +69,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <div className="w-full text-center p-5">
+    <div className="w-full text-center py-5 pl-3 pr-[28px]">
       <p className="text-3xl font-bold pb-10"> Kenneth's Projects</p>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {loading ? (
