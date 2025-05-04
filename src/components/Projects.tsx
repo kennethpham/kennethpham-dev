@@ -48,7 +48,7 @@ const repoList = [
 
 export default function Projects() {
   const [loading, setLoading] = useState(true);
-  const [repos, setRepos] = useState([]);
+  const [repos, setRepos] = useState<any[]>([]);
 
   useLayoutEffect(() => {
     fetch("https://api.github.com/users/kennethpham/repos")
